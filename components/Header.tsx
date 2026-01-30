@@ -32,28 +32,55 @@ export default function Header() {
   return (
     <div>
       {/* Floating Navigation */}
-      <nav className="fixed top-24 sm:top-12 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-7xl flex items-center justify-between px-4 py-2 transition-all duration-300">
-        {/* Logo */}
-        <div
-          className={`flex items-center justify-center rounded-full transition-all duration-300
-            ${isScrolled ? "bg-white/40 border-4 border-white" : "bg-white/40 border-4 border-white/40"}
-            w-48 h-48 md:w-48 md:h-48
-            md:static absolute left-1/2 -translate-x-1/2 md:translate-x-0`}
-        >
-          <Image src="/img/logo.png" width={100} height={100} alt="Agra Sound Logo" />
-        </div>
-
-        {/* Hamburger for mobile */}
+      <nav className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 py-4 md:top-24 md:left-[45%] md:-translate-x-1/2 md:w-[90%] md:max-w-7xl transition-all duration-300">
+        {/* Hamburger Icon (Mobile) */}
         <div className="md:hidden flex items-center">
-          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-white">
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="text-white"
+          >
             {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
 
+        {/* Logo */}
+        <div className="relative flex items-center justify-center w-56 h-56 mx-auto md:mx-0 md:-mt-10">
+          {/* OUTER RING — animated ONLY */}
+          <div
+            className="
+      absolute inset-0
+      rounded-full
+      border-2 border-white/40
+      animate-equalizer
+      pointer-events-none
+    "
+          />
+
+          {/* INNER LOGO — NO animation */}
+          <div
+            className={`flex items-center justify-center rounded-full transition-all duration-300
+        ${isScrolled ? "bg-white/40 border-4 border-white" : "bg-white/40 border-4 border-white/40"}
+        w-48 h-48
+        z-10
+      `}
+          >
+            <Image
+              src="/img/logo.png"
+              width={100}
+              height={100}
+              alt="Agra Sound Logo"
+            />
+          </div>
+        </div>
+
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8 text-lg text-white/90">
+        <div className="hidden md:flex md:border-2 md:bg-white/40 rounded-full items-center gap-8 px-10 py-4 text-lg text-white/90 md:-mt-50">
           {menuItems.map((item) => (
-            <Link key={item.name} href={item.href} className="hover:text-amber-400">
+            <Link
+              key={item.name}
+              href={item.href}
+              className="hover:text-amber-400"
+            >
               {item.name}
             </Link>
           ))}
@@ -62,11 +89,10 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="absolute justify-center h-full w-full flex flex-col items-center gap-6 bg-black/70 backdrop-blur-md py-6 md:hidden z-40">
+        <div className="absolute justify-center h-full w-full flex flex-col items-center gap-6 bg-black/70 backdrop-blur-md py-100 md:hidden z-40">
           {menuItems.map((item, index) => {
-            // fade effect using scrollY from state
-            const delay = index * 70;
-            const itemOpacity = Math.max(0, 1 - (scrollY - delay) / 40);
+            const delay = index * 60;
+            const itemOpacity = Math.max(0, 1 - (scrollY - delay) / 30);
 
             return (
               <Link
