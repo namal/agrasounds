@@ -25,11 +25,18 @@ export default function Hero({ scrollY, onGetQuote }: HeroProps) {
     "https://videos.pexels.com/video-files/6558963/6558963-hd_1920_1080_25fps.mp4",
   ];
 
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+const [mobileMenuOpacity, setMobileMenuOpacity] = useState(1);
+
+useEffect(() => {
+  const handleScroll = () => {
+    const scrollThreshold = 100; // adjust when you want fade to start
+    const opacity = Math.max(0, 1 - window.scrollY / scrollThreshold);
+    setMobileMenuOpacity(opacity);
+    setIsScrolled(window.scrollY > 50);
+  };
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -105,16 +112,36 @@ export default function Hero({ scrollY, onGetQuote }: HeroProps) {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="absolute justify-center left-0 h-full w-full flex flex-col items-center gap-4 bg-black/70 backdrop-blur-md py-6 md:hidden z-40">
-          <Link href={createPageUrl("Services")} className="text-white text-lg hover:text-amber-400" onClick={() => setMobileMenuOpen(false)}>Services</Link>
-          <a href="#events" className="text-white text-lg hover:text-amber-400" onClick={() => setMobileMenuOpen(false)}>Events</a>
-          <a href="#equipment" className="text-white text-lg hover:text-amber-400" onClick={() => setMobileMenuOpen(false)}>Equipment</a>
-          <a href="#reviews" className="text-white text-lg hover:text-amber-400" onClick={() => setMobileMenuOpen(false)}>Reviews</a>
-          <a href="#contact" className="text-white text-lg hover:text-amber-400" onClick={() => setMobileMenuOpen(false)}>Contact</a>
-        </div>
-      )}
+{/* Mobile Menu */}
+{mobileMenuOpen && (
+  <div className="absolute justify-center h-full w-full flex flex-col items-center gap-6 bg-black/70 backdrop-blur-md py-6 md:hidden z-40">
+    {[
+      { name: "Services", href: createPageUrl("Services") },
+      { name: "Events", href: "#events" },
+      { name: "Equipment", href: "#equipment" },
+      { name: "Reviews", href: "#reviews" },
+      { name: "Contact", href: "#contact" },
+    ].map((item, index) => {
+      // Each item fades a little later
+      const delay = index * 60; // stagger per item (px scroll)
+      const itemOpacity = Math.max(0, 1 - (window.scrollY - delay) / 100);
+
+      return (
+        <Link
+          key={item.name}
+          href={item.href}
+          className="text-white text-3xl hover:text-amber-400 transition-opacity duration-300"
+          style={{ opacity: itemOpacity }}
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          {item.name}
+        </Link>
+      );
+    })}
+  </div>
+)}
+
+
 
       {/* Hero Content */}
       <div className="relative z-20 text-center px-6 max-w-5xl mx-auto text-white">
@@ -140,7 +167,7 @@ export default function Hero({ scrollY, onGetQuote }: HeroProps) {
           <Button
             size="lg"
             variant="outline"
-            className="rounded-full text-white border-white/40"
+            className="rounded-full text-black border-white/40"
           >
             <Play className="mr-2 w-5 h-5" />
             View Our Work
