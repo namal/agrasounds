@@ -29,8 +29,8 @@ export default function Hero({ scrollY, onGetQuote }: HeroProps) {
       setTimeout(() => {
         setCurrentVideoIndex((prev) => (prev + 1) % videos.length);
         setIsTransitioning(false);
-      }, 1000);
-    }, 5000);
+      }, 500);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, []);
