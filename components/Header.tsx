@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { createPageUrl } from "@/utils";
+import MusicRing from "./MusicRing";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -54,6 +55,7 @@ export default function Header() {
       animate-equalizer
       pointer-events-none
     "
+    
           />
 
           {/* INNER LOGO — NO animation */}
@@ -64,6 +66,7 @@ export default function Header() {
         z-10
       `}
           >
+              {/* <MusicRing /> */}
             <Image
               src="/img/logo.png"
               width={100}
