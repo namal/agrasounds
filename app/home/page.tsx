@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Hero from '@/components/home/Hero';
+import Hero from '@/components/homePage/Hero';
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);

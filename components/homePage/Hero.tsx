@@ -94,6 +94,19 @@ export default function Hero({ scrollY, onGetQuote }: HeroProps) {
       View Our Work
     </Button>
   </div>
+          {/* Floating Stats */}
+        <div className="grid grid-cols-3 gap-8 mt-20 max-w-3xl mx-auto">
+          {[
+            { number: '500+', label: 'Events Completed' },
+            { number: '100%', label: 'Client Satisfaction' },
+            { number: '24/7', label: 'Support Available' }
+          ].map((stat, index) => (
+            <div key={index} className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6">
+              <div className="text-3xl md:text-4xl font-bold text-amber-400 mb-2">{stat.number}</div>
+              <div className="text-sm text-zinc-400">{stat.label}</div>
+            </div>
+          ))}
+        </div>
 </div>
 
     </section>
