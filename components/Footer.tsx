@@ -1,12 +1,10 @@
-"use client"
+"use client";
 
-import { Phone } from "lucide-react";
-import Image from "next/image"
-import React from "react"
+import Image from "next/image";
+import React from "react";
 
 export default function Footer() {
-
-    const whatsappNumber = '971528211284';
+  const whatsappNumber = "971528211284";
 
   return (
     <footer className="bg-zinc-600 text-zinc-300 py-12 px-6">
@@ -57,13 +55,20 @@ export default function Footer() {
               alt="Ticket Icon"
               className="mt-6"
             />
-                     <Image
-              src="/img/icon/whatsapp.png"
-              width={60}
-              height={60}
-              alt="WhatsApp Icon"
-              className="mt-6"
-            />
+
+            <a
+              href={`https://wa.me/${whatsappNumber}?text=Hi, I'm interested in your event equipment rental services.`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="/img/icon/whatsapp.png"
+                width={60}
+                height={60}
+                alt="WhatsApp Icon"
+                className="mt-6"
+              />
+            </a>
           </div>
         </div>
 
@@ -114,13 +119,16 @@ export default function Footer() {
               alt="Phone Icon"
               className="mt-6"
             />
-  
-            <p className="text-2xl mt-4 items-center justify-start hover:text-amber-400 cursor-pointer">          
-              <a href={`tel:+${whatsappNumber}`} >
-                  <div>
-                    <div className="  hover:text-amber-400">+971 52 821 1284</div>
-                  </div>
-                </a></p>
+
+            <p className="text-2xl mt-4 items-center justify-start hover:text-amber-400 cursor-pointer">
+              <a
+                href={`https://wa.me/${whatsappNumber}?text=Hi, I'm interested in your event equipment rental services.`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                +971 50 123 4567
+              </a>
+            </p>
           </div>
           <div className="space-y-2 flex items-center flex-row justify-start md:justify-start gap-6">
             <Image
@@ -130,7 +138,9 @@ export default function Footer() {
               alt="Phone Icon"
               className="mt-6"
             />
-            <p className="text-2xl mt-4 items-center justify-start hover:text-amber-400 cursor-pointer">agrapulathisi@gmail.com</p>
+            <p className="text-2xl mt-4 items-center justify-start hover:text-amber-400 cursor-pointer">
+              agrapulathisi@gmail.com
+            </p>
           </div>
           <div className="space-y-2 flex items-center flex-row justify-start md:justify-start gap-6">
             <Image
@@ -140,20 +150,24 @@ export default function Footer() {
               alt="Phone Icon"
               className="mt-6"
             />
-            <p className="text-2xl mt-4 items-start justify-start">Rolla Streat, Burdubai, Dubai, UAE.</p>
+            <p className="text-2xl mt-4 items-start justify-start">
+              Rolla Streat, Burdubai, Dubai, UAE.
+            </p>
           </div>
           <div className="space-y-2 flex items-center flex-row justify-start md:justify-start gap-6">
-               <Image
+            <Image
               src="/img/icon/phone-call.png"
               width={40}
               height={60}
               alt="WhatsApp Icon"
               className="mt-6"
             />
-             <p className="text-2xl mt-4 items-center justify-center hover:text-amber-400 cursor-pointer">+971 50 123 4567</p>
+            <p className="text-2xl mt-4 items-center justify-center hover:text-amber-400 cursor-pointer">
+              +971 50 123 4567
+            </p>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }
