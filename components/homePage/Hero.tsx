@@ -108,7 +108,7 @@ export default function Hero({ scrollY, onGetQuote }: HeroProps) {
         className="relative z-20 text-center px-4 sm:px-6 md:px-8 max-w-5xl mx-auto text-white transition-opacity duration-300 mt-12  md:mt-12"
         // style={{ opacity: fadeOpacity }}
       >
-        <div>
+        <div className="sm:mt-50 md:mt-50">
           {/* Heading */}
           <h1 className="text-3xl sm:text-4xl md:text-7xl font-bold mb-12 sm:mb-6">
             
