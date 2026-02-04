@@ -39,8 +39,8 @@ export default function Hero({ scrollY, onGetQuote }: HeroProps) {
 // Hero section rotating text 
 
   const textList = [
-  <>Bring unique insights into the needs of today's event</>,
-  <>With AGRA Sounds, your event supercharged</>,
+  <>Bring unique insights into the needs of <span className="text-white">{"today's"}</span> event</>,
+  <>With <span className="text-white">AGRA</span> Sounds, your event supercharged</>,
   <>
     Renting High-end AV Equipment in{" "}
     <span className="text-white">Dubai</span>
@@ -62,21 +62,21 @@ export default function Hero({ scrollY, onGetQuote }: HeroProps) {
   // ---------------------------------------------------------
 
 
-  const textPara = [
-    // "AGRA Sounds offers professional audiovisual consulting services to make your events a complete success.",
-    // "",
-    // "Elevate your upcoming big or small event to new heights with out audio & sound setups for rent"
-  ]
+  // const textPara = [
+  //   // "AGRA Sounds offers professional audiovisual consulting services to make your events a complete success.",
+  //   // "",
+  //   // "Elevate your upcoming big or small event to new heights with out audio & sound setups for rent"
+  // ]
 
-  const [ParaIndex, setParaIndex] = useState(0)
+  // const [ParaIndex, setParaIndex] = useState(0)
 
-  useEffect(() => {
-    const textTimer = setInterval(() => {
-      setParaIndex((prev) => (prev + 1) % textPara.length)
-    }, 2000)
+  // useEffect(() => {
+  //   const textTimer = setInterval(() => {
+  //     setParaIndex((prev) => (prev + 1) % textPara.length)
+  //   }, 2000)
 
-    return () => clearInterval(textTimer)
-  }, [ textPara.length ])
+  //   return () => clearInterval(textTimer)
+  // }, [ textPara.length ])
 
 
   return (
@@ -121,9 +121,9 @@ export default function Hero({ scrollY, onGetQuote }: HeroProps) {
           </h1>
 
           {/* Subtext */}
-          <p key={ParaIndex} className="text-base sm:text-lg md:text-xl text-zinc-300 mb-8 sm:mb-12 max-w-3xl mx-auto">
+          {/* <p key={ParaIndex} className="text-base sm:text-lg md:text-xl text-zinc-300 mb-8 sm:mb-12 max-w-3xl mx-auto">
             {textPara[ParaIndex]}
-          </p>
+          </p> */}
         </div>
 
         {/* Buttons */}

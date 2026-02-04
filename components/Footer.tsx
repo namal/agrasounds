@@ -1,9 +1,13 @@
 "use client"
 
+import { Phone } from "lucide-react";
 import Image from "next/image"
 import React from "react"
 
 export default function Footer() {
+
+    const whatsappNumber = '971528211284';
+
   return (
     <footer className="bg-zinc-600 text-zinc-300 py-12 px-6">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
@@ -111,7 +115,12 @@ export default function Footer() {
               className="mt-6"
             />
   
-            <p className="text-2xl mt-4 items-center justify-start hover:text-amber-400 cursor-pointer">+971 50 123 4567</p>
+            <p className="text-2xl mt-4 items-center justify-start hover:text-amber-400 cursor-pointer">          
+              <a href={`tel:+${whatsappNumber}`} >
+                  <div>
+                    <div className="  hover:text-amber-400">+971 52 821 1284</div>
+                  </div>
+                </a></p>
           </div>
           <div className="space-y-2 flex items-center flex-row justify-start md:justify-start gap-6">
             <Image
