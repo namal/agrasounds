@@ -107,11 +107,11 @@ export default function Footer() {
         </div>
 
         {/* Section 3: Terms */}
-        <div className="md:text-start  pt-6 md:pt-0">
+        <div className="md:text-start  pt-6 md:pt-0 ">
           <h4 className="text-white font-semibold mb-3 text-2xl uppercase text-center">
             CONTACT US
           </h4>
-          <div className="space-y-2 flex items-center flex-row justify-start md:justify-start gap-6">
+          <div className="space-y-2 flex items-center flex-row justify-start md:justify-start gap-4">
             <Image
               src="/img/icon/whatsapp.png"
               width={40}
@@ -130,7 +130,7 @@ export default function Footer() {
               </a>
             </p>
           </div>
-          <div className="space-y-2 flex items-center flex-row justify-start md:justify-start gap-6">
+          <div className="space-y-2 flex items-center flex-row justify-start md:justify-start gap-4">
             <Image
               src="/img/icon/email.png"
               width={40}
@@ -142,7 +142,7 @@ export default function Footer() {
               agrapulathisi@gmail.com
             </p>
           </div>
-          <div className="space-y-2 flex items-center flex-row justify-start md:justify-start gap-6">
+          <div className="space-y-2 flex items-center flex-row justify-start md:justify-start gap-4">
             <Image
               src="/img/icon/location.png"
               width={40}
@@ -154,7 +154,7 @@ export default function Footer() {
               Rolla Streat, Burdubai, Dubai, UAE.
             </p>
           </div>
-          <div className="space-y-2 flex items-center flex-row justify-start md:justify-start gap-6">
+          <div className="space-y-2 flex items-center flex-row justify-start md:justify-start gap-4">
             <Image
               src="/img/icon/phone-call.png"
               width={40}

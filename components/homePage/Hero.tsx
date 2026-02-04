@@ -21,7 +21,7 @@ export default function Hero({ scrollY, onGetQuote }: HeroProps) {
   ]
 
   // Fade opacity for text & buttons (based on scroll)
-  const fadeOpacity = Math.max(0, 1 - scrollY / 250) // adjust 200 for faster/slower fade
+  // const fadeOpacity = Math.max(0, 1 - scrollY / 20) // adjust 200 for faster/slower fade
 
   useEffect(() => {
     const interval = setInterval(() => {

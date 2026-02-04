@@ -63,7 +63,7 @@ export default function Home() {
       <Equipment />
       <WhyChooseUs />
       <Clients />
-      <GoogleReviews />
+      {/* <GoogleReviews /> */}
       <ContactForm />
       <Footer />
     </div>
