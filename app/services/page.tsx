@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import SciFiTunnel from "@/components/SciFiTunnel";
+// import SciFiTunnel from "@/components/SciFiTunnel";
 
 export default function Services() {
   const services = [
@@ -64,7 +64,7 @@ export default function Services() {
           /> */}
           {/* Optional dark overlay */}
           {/* <div className="absolute inset-0 bg-black/40" /> */}
-          <SciFiTunnel />
+          {/* <SciFiTunnel /> */}
         </section>
       </div>
       {/* Hero Section */}

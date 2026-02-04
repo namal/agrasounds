@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "components/MusicRing.tsx1", "components/SciFiTunnel.tsx1", "components/ui/resizable.tsx1"  ],
   "exclude": ["node_modules"]
 }
