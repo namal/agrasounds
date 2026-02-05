@@ -61,9 +61,9 @@ const eventTypes = [
   },
   {
     icon: Music,
-    title: 'Live Performances',
+    title: 'Silent or Headphone Party',
     description: 'Concert-grade equipment for live entertainment',
-    image: 'https://images.unsplash.com/photo-1501612766622-27c843537876?w=800&q=80',
+    image: 'img/Silint_Party.png',
     color: 'from-fuchsia-500 to-pink-500'
   }
 ];

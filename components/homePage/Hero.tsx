@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Play } from "lucide-react"
+import Stats from "../ui/auto-count"
 
 interface HeroProps {
   scrollY: number
@@ -148,7 +149,7 @@ export default function Hero({ scrollY, onGetQuote }: HeroProps) {
         </div>
 
         {/* Floating Stats */}
-        <div className="grid grid-cols-3 gap-4 mb-20 max-w-3xl mx-auto">
+        {/* <div className="grid grid-cols-3 gap-4 mb-20 max-w-3xl mx-auto">
           {[
             { number: "500+", label: "Events Completed" },
             { number: "100%", label: "Client Satisfaction" },
@@ -164,7 +165,9 @@ export default function Hero({ scrollY, onGetQuote }: HeroProps) {
               <div className="text-sm text-zinc-400">{stat.label}</div>
             </div>
           ))}
-        </div>
+        </div> */}
+
+        <Stats />
       </div>
     </section>
   )
