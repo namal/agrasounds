@@ -60,7 +60,7 @@ export default function Header() {
             `}
           >
             <Image
-              src="/img/Logo.png"
+              src="img/logo.png"
               width={100}
               height={100}
               alt="Agra Sound Logo"

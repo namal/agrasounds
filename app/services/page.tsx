@@ -3,8 +3,7 @@
 import React, { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+
 import {
   Dialog,
   DialogContent,
@@ -20,6 +19,7 @@ import {
   Home,
 } from "lucide-react";
 import Link from "next/link";
+import RentingPage from "./renting/page";
 
 export default function Services() {
   const [openForm, setOpenForm] = useState<"rent" | "repair" | null>(null);
@@ -142,18 +142,7 @@ export default function Services() {
           <DialogHeader>
             <DialogTitle>Equipment Rental Request</DialogTitle>
           </DialogHeader>
-
-          <form className="space-y-4">
-            <Input placeholder="Full Name" required />
-            <Input placeholder="Phone Number" required />
-            <Input placeholder="Email Address" type="email" />
-            <Input type="date" />
-            <Textarea placeholder="Equipment required" rows={4} />
-
-            <Button className="w-full bg-gradient-to-r from-blue-500 to-cyan-500">
-              Submit Rental Request
-            </Button>
-          </form>
+          <RentingPage />
         </DialogContent>
       </Dialog>
 
@@ -166,17 +155,6 @@ export default function Services() {
           <DialogHeader>
             <DialogTitle>Sound Repair Request</DialogTitle>
           </DialogHeader>
-
-          <form className="space-y-4">
-            <Input placeholder="Full Name" required />
-            <Input placeholder="Phone Number" required />
-            <Input placeholder="Equipment Type" />
-            <Textarea placeholder="Describe the issue" rows={4} required />
-
-            <Button className="w-full bg-gradient-to-r from-amber-500 to-orange-500">
-              Submit Repair Request
-            </Button>
-          </form>
         </DialogContent>
       </Dialog>
     </div>

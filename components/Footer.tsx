@@ -13,7 +13,7 @@ export default function Footer() {
         <div>
           <div className="flex flex-col items-center text-center md:items-start md:text-left">
             <Image
-              src="/img/Logo.png"
+              src="img/logo.png"
               width={120}
               height={120}
               alt="Agra Sound Logo"
@@ -28,28 +28,28 @@ export default function Footer() {
           </div>
           <div className="flex flex-raw space-x-4 mt-6 justify-center md:justify-start">
             <Image
-              src="/img/icon/facebook.png"
+              src="img/icon/facebook.png"
               width={60}
               height={60}
               alt="facebook"
               className="mt-6"
             />
             <Image
-              src="/img/icon/instagram(1).png"
+              src="img/icon/instagram(1).png"
               width={60}
               height={60}
               alt="Instagram"
               className="mt-6"
             />
             <Image
-              src="/img/icon/tiktok.png"
+              src="img/icon/tiktok.png"
               width={60}
               height={60}
               alt="Ticket Icon"
               className="mt-6"
             />
             <Image
-              src="/img/icon/youtube.png"
+              src="img/icon/youtube.png"
               width={60}
               height={60}
               alt="Ticket Icon"
@@ -62,7 +62,7 @@ export default function Footer() {
               rel="noopener noreferrer"
             >
               <Image
-                src="/img/icon/whatsapp.png"
+                src="img/icon/whatsapp.png"
                 width={60}
                 height={60}
                 alt="WhatsApp Icon"
@@ -113,7 +113,7 @@ export default function Footer() {
           </h4>
           <div className="space-y-2 flex items-center flex-row justify-start md:justify-start gap-4">
             <Image
-              src="/img/icon/whatsapp.png"
+              src="img/icon/whatsapp.png"
               width={40}
               height={60}
               alt="Phone Icon"
@@ -132,7 +132,7 @@ export default function Footer() {
           </div>
           <div className="space-y-2 flex items-center flex-row justify-start md:justify-start gap-4">
             <Image
-              src="/img/icon/email.png"
+              src="img/icon/email.png"
               width={40}
               height={60}
               alt="Phone Icon"
@@ -144,7 +144,7 @@ export default function Footer() {
           </div>
           <div className="space-y-2 flex items-center flex-row justify-start md:justify-start gap-4">
             <Image
-              src="/img/icon/location.png"
+              src="img/icon/location.png"
               width={40}
               height={60}
               alt="Phone Icon"
@@ -156,7 +156,7 @@ export default function Footer() {
           </div>
           <div className="space-y-2 flex items-center flex-row justify-start md:justify-start gap-4">
             <Image
-              src="/img/icon/phone-call.png"
+              src="img/icon/phone-call.png"
               width={40}
               height={60}
               alt="WhatsApp Icon"
