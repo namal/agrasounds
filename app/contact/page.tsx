@@ -1,6 +1,44 @@
-import Image from "next/image"
+"use client";
+import { useState } from "react";
+import Image from "next/image";
 
 export default function ContactPage() {
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setLoading(true);
+
+    // Explicitly type currentTarget as HTMLFormElement
+    const form = e.currentTarget as HTMLFormElement;
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          message: formData.get("message"),
+        }),
+      });
+
+      if (res.ok) {
+        alert("Message sent successfully!");
+        form.reset(); // ✅ Works now
+      } else {
+        alert("Failed to send message");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong!");
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <>
       {/* ================= HERO SECTION ================= */}
@@ -12,10 +50,7 @@ export default function ContactPage() {
           priority
           className="object-cover "
         />
-
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/60" />
-
+        <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center px-6">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">Get in Touch</h1>
           <p className="text-zinc-200 mx-auto text-3xl">
@@ -34,15 +69,16 @@ export default function ContactPage() {
                 Send us a message
               </h3>
 
-              <form className="space-y-5">
+              <form className="space-y-5" onSubmit={handleSubmit}>
                 <div>
                   <label className="block text-sm font-medium mb-1 text-zinc-700">
                     Name
                   </label>
                   <input
-                    type="text"
+                    name="name"
                     placeholder="Your Name"
-                    className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                    required
+                    className="w-full rounded-lg border px-4 py-2"
                   />
                 </div>
 
@@ -51,9 +87,11 @@ export default function ContactPage() {
                     Email Address
                   </label>
                   <input
+                    name="email"
                     type="email"
                     placeholder="you@example.com"
-                    className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                    required
+                    className="w-full rounded-lg border px-4 py-2"
                   />
                 </div>
 
@@ -62,9 +100,9 @@ export default function ContactPage() {
                     Phone Number
                   </label>
                   <input
-                    type="tel"
+                    name="phone"
                     placeholder="+971 XX XXX XXXX"
-                    className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                    className="w-full rounded-lg border px-4 py-2"
                   />
                 </div>
 
@@ -73,21 +111,24 @@ export default function ContactPage() {
                     Message
                   </label>
                   <textarea
+                    name="message"
                     rows={4}
-                    placeholder="Tell us about your event..."
-                    className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                    required
+                    className="w-full rounded-lg border px-4 py-2"
                   />
                 </div>
 
                 <button
                   type="submit"
+                  disabled={loading}
                   className="w-full bg-black text-white py-3 rounded-lg hover:bg-zinc-800 transition font-medium"
                 >
-                  Send Message
+                  {loading ? "Sending..." : "Send Message"}
                 </button>
               </form>
             </div>
-            {/* Right CONTENT (optional info / image later) */}
+
+            {/* Right CONTENT */}
             <div className="text-center md:text-left">
               <div className="flex justify-center md:justify-start">
                 <Image
@@ -95,12 +136,13 @@ export default function ContactPage() {
                   alt="Contact Information"
                   width={500}
                   height={400}
-                  className="mb-6 rounded-lg shadow-lg"
+                  className="mb-6 rounded-4xl shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
                 />
               </div>
 
-              <h2 className="text-3xl font-bold mb-4 text-zinc-900">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-zinc-900 relative inline-block">
                 Let’s talk about your event
+                <span className="absolute left-0 -bottom-2 w-16 h-1 bg-amber-500 rounded-full"></span>
               </h2>
 
               <p className="text-zinc-600 mb-6 text-lg">
@@ -112,5 +154,5 @@ export default function ContactPage() {
         </div>
       </section>
     </>
-  )
+  );
 }
