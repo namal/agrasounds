@@ -74,7 +74,7 @@ export default function Footer() {
 
         {/* Section 2: Privacy */}
         <div className="md:text-start text-center pt-6 md:pt-0">
-          <h4 className="text-white font-semibold mb-12 text-2xl uppercase">
+          <h4 className="text-white font-semibold mb-12 text-2xl uppercase text-shadow-lg ">
             Quick Links
           </h4>
 
@@ -100,7 +100,7 @@ export default function Footer() {
               Events
             </a>
 
-            <a href="/privacy" className="text-2xl hover:text-amber-400 block">
+            <a href="/contact" className="text-2xl hover:text-amber-400 block">
               Contact
             </a>
           </div>
