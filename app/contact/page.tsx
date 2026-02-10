@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/image"
 
 export default function ContactPage() {
   return (
@@ -15,6 +15,14 @@ export default function ContactPage() {
 
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/40" />
+
+        <div
+          className="relative z-10 mb-140 ml-140 w-950 h-44"
+        >
+          {/* Stars */}
+          <div className="absolute inset-0  star-field opacity-50"></div>
+         
+        </div>
 
         <div className="relative z-10 text-center px-6">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">Get in Touch</h1>
@@ -105,12 +113,14 @@ export default function ContactPage() {
               </h2>
 
               <p className="text-zinc-600 mb-6 text-lg">
-                {"Whether it’s sound, lighting, or full event production, Agra Sounds is ready to support your next event in Dubai."}
+                {
+                  "Whether it’s sound, lighting, or full event production, Agra Sounds is ready to support your next event in Dubai."
+                }
               </p>
             </div>
           </div>
         </div>
       </section>
     </>
-  );
+  )
 }

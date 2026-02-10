@@ -1,28 +1,22 @@
-"use client";
+"use client"
 
-import React, { useState } from "react";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import React, { useState } from "react"
+import { Card } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { createPageUrl } from "@/utils";
-import {
-  Wrench,
-  ArrowRight,
-  Speaker,
-  Sparkles,
-  Home,
-} from "lucide-react";
-import Link from "next/link";
-import RentingPage from "./renting/page";
+} from "@/components/ui/dialog"
+import { createPageUrl } from "@/utils"
+import { Wrench, ArrowRight, Speaker, Sparkles, Home } from "lucide-react"
+import Link from "next/link"
+import RentingPage from "./renting/page"
 
 export default function Services() {
-  const [openForm, setOpenForm] = useState<"rent" | "repair" | null>(null);
+  const [openForm, setOpenForm] = useState<"rent" | "repair" | null>(null)
 
   const services = [
     {
@@ -55,31 +49,38 @@ export default function Services() {
       ],
       type: "repair",
     },
-  ];
+  ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-zinc-600 to-white">
+    <div className="min-h-screen bg-linear-to-b from-zinc-600 to-white">
       {/* HERO */}
-      <section className="relative py-24 px-6">
-        <div className="max-w-7xl mx-auto">
-          <Link
+      <section className="relative  min-h-210 flex items-center px-6">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/img/services-hero.png')" }}
+        />
+
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/50" />
+
+        {/* Content */}
+        <div className="relative max-w-7xl mx-auto text-white">
+          {/* <Link
             href={createPageUrl("Home")}
-            className="inline-flex items-center gap-2 text-zinc-200 hover:text-amber-500 mb-8"
+            className="inline-flex items-center gap-2 text-zinc-200 hover:text-amber-400 mb-8"
           >
             <Home className="w-4 h-4" />
             Back to Home
-          </Link>
+          </Link> */}
 
-          <div className="flex items-center gap-3 mb-6">
-            <Sparkles className="w-8 h-8 text-amber-500" />
-            <h1 className="text-5xl md:text-7xl font-bold text-zinc-900">
-              Our Services
-            </h1>
+          <div className="flex sm:items-center justify-center sm:justify-start gap-3 mb-6 ">
+            <h1 className="text-5xl md:text-7xl font-bold">Our Services</h1>
           </div>
 
-          <p className="text-xl md:text-2xl text-zinc-700 max-w-3xl">
-            Premium equipment rentals and professional sound repair services —
-            all under one roof.
+          <p className="text-xl md:text-2xl text-zinc-200 max-w-3xl text-center sm:text-start">
+            Premium equipment rentals and professional sound repair services
+            <span className="block">all under one roof.</span>
           </p>
         </div>
       </section>
@@ -103,9 +104,7 @@ export default function Services() {
                   <service.icon className="w-10 h-10 text-white" />
                 </div>
 
-                <h2 className="text-3xl font-bold mb-4">
-                  {service.title}
-                </h2>
+                <h2 className="text-3xl font-bold mb-4">{service.title}</h2>
 
                 <p className="text-lg text-zinc-600 mb-6">
                   {service.description}
@@ -158,5 +157,5 @@ export default function Services() {
         </DialogContent>
       </Dialog>
     </div>
-  );
+  )
 }
