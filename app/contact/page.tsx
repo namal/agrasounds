@@ -1,6 +1,46 @@
-import Image from "next/image"
+"use client";
+import { useState } from "react";
+import Image from "next/image";
 
 export default function ContactPage() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    });
+
+    const data = await res.json();
+    setLoading(false);
+
+    if (data.success) {
+      alert("Message sent successfully!");
+      setForm({ name: "", email: "", phone: "", message: "" });
+    } else {
+      alert("Something went wrong.");
+    }
+  };
+
   return (
     <>
       {/* ================= HERO SECTION ================= */}
@@ -16,12 +56,9 @@ export default function ContactPage() {
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/40" />
 
-        <div
-          className="relative z-10 mb-140 ml-140 w-950 h-44"
-        >
+        <div className="relative z-10 mb-140 ml-140 w-950 h-44">
           {/* Stars */}
           <div className="absolute inset-0  star-field opacity-50"></div>
-         
         </div>
 
         <div className="relative z-10 text-center px-6">
@@ -42,15 +79,19 @@ export default function ContactPage() {
                 Send us a message
               </h3>
 
-              <form className="space-y-5">
+              <form className="space-y-5" onSubmit={handleSubmit}>
                 <div>
                   <label className="block text-sm font-medium mb-1 text-zinc-700">
                     Name
                   </label>
                   <input
                     type="text"
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
                     placeholder="Your Name"
-                    className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-2"
+                    required
                   />
                 </div>
 
@@ -60,8 +101,12 @@ export default function ContactPage() {
                   </label>
                   <input
                     type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
                     placeholder="you@example.com"
-                    className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-2"
+                    required
                   />
                 </div>
 
@@ -71,8 +116,11 @@ export default function ContactPage() {
                   </label>
                   <input
                     type="tel"
+                    name="phone"
+                    value={form.phone}
+                    onChange={handleChange}
                     placeholder="+971 XX XXX XXXX"
-                    className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-2"
                   />
                 </div>
 
@@ -82,16 +130,21 @@ export default function ContactPage() {
                   </label>
                   <textarea
                     rows={4}
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
                     placeholder="Tell us about your event..."
-                    className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-2"
+                    required
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-black text-white py-3 rounded-lg hover:bg-zinc-800 transition font-medium"
+                  disabled={loading}
+                  className="w-full bg-black text-white py-3 rounded-lg"
                 >
-                  Send Message
+                  {loading ? "Sending..." : "Send Message"}
                 </button>
               </form>
             </div>
@@ -122,5 +175,5 @@ export default function ContactPage() {
         </div>
       </section>
     </>
-  )
+  );
 }

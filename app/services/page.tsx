@@ -1,22 +1,23 @@
-"use client"
+"use client";
 
-import React, { useState } from "react"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import React, { useState } from "react";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog"
-import { createPageUrl } from "@/utils"
-import { Wrench, ArrowRight, Speaker, Sparkles, Home } from "lucide-react"
-import Link from "next/link"
-import RentingPage from "./renting/page"
+} from "@/components/ui/dialog";
+import { createPageUrl } from "@/utils";
+import { Wrench, ArrowRight, Speaker, Sparkles, Home } from "lucide-react";
+import Link from "next/link";
+import RentingPage from "./renting/page";
+import RepairingPage from "./repairing/page";
 
 export default function Services() {
-  const [openForm, setOpenForm] = useState<"rent" | "repair" | null>(null)
+  const [openForm, setOpenForm] = useState<"rent" | "repair" | null>(null);
 
   const services = [
     {
@@ -49,7 +50,7 @@ export default function Services() {
       ],
       type: "repair",
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-linear-to-b from-zinc-600 to-white">
@@ -154,8 +155,9 @@ export default function Services() {
           <DialogHeader>
             <DialogTitle>Sound Repair Request</DialogTitle>
           </DialogHeader>
+          <RepairingPage />
         </DialogContent>
       </Dialog>
     </div>
-  )
+  );
 }
