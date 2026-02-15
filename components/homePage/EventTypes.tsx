@@ -49,7 +49,7 @@ const eventTypes = [
     icon: Building,
     title: 'Mall Activations',
     description: 'Engaging sound systems for mall events',
-    image: 'https://images.unsplash.com/photo-1519567752329-3719d6533c27?w=800&q=80',
+    image: 'img/Mall_event.png',
     color: 'from-teal-500 to-emerald-500'
   },
   {

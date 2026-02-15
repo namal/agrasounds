@@ -8,9 +8,9 @@ import Link from 'next/link';
 
 const equipment = [
   {
-    name: 'JBL Professional Series',
+    name: 'EV Professional Series',
     category: 'Speakers',
-    image: 'https://images.unsplash.com/photo-1545135950-b20c5a23d677?w=600&q=80',
+    image: 'img/EV.png',
     features: ['High Power', 'Crystal Clear']
   },
   {

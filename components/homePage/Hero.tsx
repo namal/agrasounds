@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Play } from "lucide-react"
 import Stats from "../ui/auto-count"
+import ContactPage from "@/app/contact/page"
 
 interface HeroProps {
   scrollY: number
@@ -136,6 +137,7 @@ export default function Hero({ scrollY, onGetQuote }: HeroProps) {
           >
             Get a Free Quote
             <ArrowRight className="ml-2 w-5 h-5" />
+            
           </Button>
 
           <Button

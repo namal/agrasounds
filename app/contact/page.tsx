@@ -53,13 +53,9 @@ export default function ContactPage() {
           className="object-cover "
         />
 
-        {/* Overlay */}
+        Overlay
         <div className="absolute inset-0 bg-black/40" />
 
-        <div className="relative z-10 mb-140 ml-140 w-950 h-44">
-          {/* Stars */}
-          <div className="absolute inset-0  star-field opacity-50"></div>
-        </div>
 
         <div className="relative z-10 text-center px-6">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">Get in Touch</h1>

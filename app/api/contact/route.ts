@@ -26,9 +26,9 @@ export async function POST(req: Request) {
       from: `"Website Contact" <${process.env.SMTP_USER}>`,
       to: process.env.SMTP_USER, // send to yourself
       replyTo: email,
-      subject: `New Contact Message from ${name}`,
+      subject: `${name} sent you a message`,
       html: `
-        <h2>New Message</h2>
+        <h2>New Message from ${name}</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone:</strong> ${phone}</p>
