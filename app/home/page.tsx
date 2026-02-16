@@ -10,6 +10,7 @@ import Equipment from '@/components/homePage/Equipment';
 import WhyChooseUs from '@/components/homePage/WhyChooseUs';
 import Clients from '@/components/homePage/Clients';
 import GoogleReviews from '@/components/homePage/GoogleReviews';
+import BrandsPage from '@/components/homePage/BrandsPage';
 import ContactForm from '@/components/homePage/ContactForm';
 
 export default function Home() {
@@ -61,6 +62,7 @@ export default function Home() {
       <Services />
       <EventTypes />
       <Equipment />
+      <BrandsPage />
       <WhyChooseUs />
       <Clients />
       {/* <GoogleReviews /> */}

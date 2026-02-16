@@ -62,8 +62,8 @@ export default function RentingPage() {
     setLoading(true);
 
     try {
-      console.log("Submitted Data:", formData);
-      alert("Form submitted successfully!");
+      console.log("Renting Request:", formData);
+      alert("Renting request submitted successfully!");
 
       handleReset();
     } catch (error) {
@@ -89,34 +89,50 @@ export default function RentingPage() {
   };
 
   return (
-    <div className="w-full flex items-center justify-center">
+    <div className="flex items-center justify-center px-4 py-10">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-xl shadow-lg w-full max-w-md space-y-4"
+        className="bg-white/95 backdrop-blur-md p-8 rounded-2xl shadow-2xl w-full max-w-2xl space-y-4"
       >
-        <h2 className="text-xl font-semibold text-center">
+        <h2 className="text-2xl font-bold text-center text-zinc-800 mb-6">
           Renting Request
         </h2>
 
-        {/* Name */}
-        <div>
-          <label htmlFor="name" className="block text-sm font-medium">
-            Name
-          </label>
-          <input
-            id="name"
-            type="text"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            className="w-full p-2 border rounded mt-1"
-          />
+        {/* Name + Phone */}
+        <div className="grid md:grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="name" className="block mb-1 font-medium">
+              Full Name
+            </label>
+            <input
+              id="name"
+              type="text"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="phone" className="block mb-1 font-medium">
+              Phone Number
+            </label>
+            <input
+              id="phone"
+              type="text"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+          </div>
         </div>
 
         {/* Email */}
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium">
-            Email
+        <div className="mt-4">
+          <label htmlFor="email" className="block mb-1 font-medium">
+            Email Address
           </label>
           <input
             id="email"
@@ -124,28 +140,13 @@ export default function RentingPage() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full p-2 border rounded mt-1"
-          />
-        </div>
-
-        {/* Phone */}
-        <div>
-          <label htmlFor="phone" className="block text-sm font-medium">
-            Phone
-          </label>
-          <input
-            id="phone"
-            type="tel"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-            className="w-full p-2 border rounded mt-1"
+            className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
           />
         </div>
 
         {/* Event Date */}
-        <div>
-          <label htmlFor="eventDate" className="block text-sm font-medium">
+        <div className="mt-4">
+          <label htmlFor="eventDate" className="block mb-1 font-medium">
             Event Date
           </label>
           <input
@@ -154,14 +155,14 @@ export default function RentingPage() {
             value={formData.eventDate}
             onChange={handleChange}
             required
-            className="w-full p-2 border rounded mt-1"
+            className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
           />
         </div>
 
-        {/* Start & End Time - Same Row */}
-        <div className="grid grid-cols-2 gap-4">
+        {/* Start & End Time */}
+        <div className="grid md:grid-cols-2 gap-4 mt-4">
           <div>
-            <label htmlFor="startTime" className="block text-sm font-medium">
+            <label htmlFor="startTime" className="block mb-1 font-medium">
               Start Time
             </label>
             <input
@@ -170,12 +171,12 @@ export default function RentingPage() {
               value={formData.startTime}
               onChange={handleChange}
               required
-              className="w-full p-2 border rounded mt-1"
+              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
             />
           </div>
 
           <div>
-            <label htmlFor="endTime" className="block text-sm font-medium">
+            <label htmlFor="endTime" className="block mb-1 font-medium">
               End Time
             </label>
             <input
@@ -184,66 +185,57 @@ export default function RentingPage() {
               value={formData.endTime}
               onChange={handleChange}
               required
-              className="w-full p-2 border rounded mt-1"
+              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
             />
           </div>
         </div>
 
-        {/* Duration Display */}
+        {/* Duration */}
         {duration && (
-          <div className="text-sm text-blue-600 font-medium">
+          <div className="text-sm text-blue-600 font-medium mt-2">
             Estimated Duration: {duration}
           </div>
         )}
 
-        {/* Location */}
-        <div>
-          <label htmlFor="location" className="block text-sm font-medium">
-            Location
-          </label>
-          <input
-            id="location"
-            type="text"
-            value={formData.location}
-            onChange={handleChange}
-            required
-            className="w-full p-2 border rounded mt-1"
-          />
+        {/* Location + Head Count */}
+        <div className="grid md:grid-cols-2 gap-4 mt-4">
+          <div>
+            <label htmlFor="location" className="block mb-1 font-medium">
+              Location
+            </label>
+            <input
+              id="location"
+              type="text"
+              value={formData.location}
+              onChange={handleChange}
+              required
+              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="headCount" className="block mb-1 font-medium">
+              Head Count
+            </label>
+            <input
+              id="headCount"
+              type="number"
+              value={formData.headCount}
+              onChange={handleChange}
+              required
+              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+          </div>
         </div>
 
-        {/* Head Count */}
-        <div>
-          <label htmlFor="headCount" className="block text-sm font-medium">
-            Head Count
-          </label>
-          <input
-            id="headCount"
-            type="number"
-            value={formData.headCount}
-            onChange={handleChange}
-            required
-            className="w-full p-2 border rounded mt-1"
-          />
-        </div>
-
-        {/* Buttons */}
-        <div className="flex gap-3 pt-2">
-          <button
-            type="submit"
-            disabled={loading}
-            className="flex-1 bg-black text-white py-2 rounded hover:bg-zinc-800 transition"
-          >
-            {loading ? "Submitting..." : "Submit"}
-          </button>
-
-          <button
-            type="button"
-            onClick={handleReset}
-            className="flex-1 bg-gray-200 py-2 rounded hover:bg-gray-300 transition"
-          >
-            Cancel
-          </button>
-        </div>
+        {/* Submit Button */}
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full mt-6 bg-blue-500 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 disabled:opacity-50"
+        >
+          {loading ? "Submitting..." : "Submit Renting Request"}
+        </button>
       </form>
     </div>
   );

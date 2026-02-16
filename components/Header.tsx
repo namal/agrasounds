@@ -22,7 +22,8 @@ export default function Header() {
     { name: "Services", href: createPageUrl("Services") },
     { name: "Events", href: createPageUrl("Events") },
     { name: "Equipment", href: createPageUrl("Equipment") },
-    { name: "Reviews", href: createPageUrl("Reviews") },
+    // { name: "Reviews", href: createPageUrl("Reviews") },
+    {name: "About Us", href: createPageUrl("AboutUs")},
     { name: "Contact", href: createPageUrl("Contact") },
   ]
 

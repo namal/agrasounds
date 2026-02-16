@@ -10,9 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { createPageUrl } from "@/utils";
-import { Wrench, ArrowRight, Speaker, Sparkles, Home } from "lucide-react";
-import Link from "next/link";
+import { Wrench, ArrowRight, Speaker, } from "lucide-react";
 import RentingPage from "./renting/page";
 import RepairingPage from "./repairing/page";
 

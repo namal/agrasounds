@@ -4,16 +4,23 @@ import React, { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Play } from "lucide-react"
 import Stats from "../ui/auto-count"
-import ContactPage from "@/app/contact/page"
+import { useRouter } from "next/navigation"
 
 interface HeroProps {
   scrollY: number
-  onGetQuote: () => void
+  // onGetQuote: () => void
 }
 
-export default function Hero({ scrollY, onGetQuote }: HeroProps) {
+export default function Hero({ scrollY }: HeroProps) {
+  const router = useRouter()
+
+  const onGetQuote = () => {
+    router.push("/contact")
+  }
+  
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
+
 
   const videos = [
     "https://videos.pexels.com/video-files/3196427/3196427-uhd_3840_2160_25fps.mp4",

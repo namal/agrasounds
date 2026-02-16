@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import ReCAPTCHA from "react-google-recaptcha";
+
 
 export default function ContactPage() {
   const [form, setForm] = useState({
@@ -17,29 +19,38 @@ export default function ContactPage() {
   ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
+const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
+  e.preventDefault();
 
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form),
-    });
+  if (!captchaToken) {
+    alert("Please verify that you are not a robot.");
+    return;
+  }
 
-    const data = await res.json();
-    setLoading(false);
+  setLoading(true);
 
-    if (data.success) {
-      alert("Message sent successfully!");
-      setForm({ name: "", email: "", phone: "", message: "" });
-    } else {
-      alert("Something went wrong.");
-    }
-  };
+  const res = await fetch("/api/contact", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ ...form, captchaToken }),
+  });
+
+  const data = await res.json();
+  setLoading(false);
+
+  if (data.success) {
+    alert("Message sent successfully!");
+    setForm({ name: "", email: "", phone: "", message: "" });
+    setCaptchaToken(null);
+  } else {
+    alert("Captcha verification failed.");
+  }
+};
+
 
   return (
     <>
@@ -134,7 +145,12 @@ export default function ContactPage() {
                     required
                   />
                 </div>
-
+                  <div className="flex justify-center">
+  <ReCAPTCHA
+    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+    onChange={(token) => setCaptchaToken(token)}
+  />
+</div>
                 <button
                   type="submit"
                   disabled={loading}
