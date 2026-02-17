@@ -2,54 +2,33 @@
 
 import React from "react";
 import { Badge } from "@/components/ui/badge";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { createPageUrl } from "@/utils";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
-
 import "swiper/css";
-import "swiper/css/navigation";
 
 const brands = [
-  {
-    name: "Electro-Voice (EV)",
-    category: "Professional Audio",
-    image: "/img/EV.png",
-  },
-  {
-    name: "Shure",
-    category: "Microphones",
-    image:
-      "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600&q=80",
-  },
+  { name: "EV", category: "Professional Audio", image: "img/brands/EV.png" },
+  { name: "Shure", category: "Microphones", image: "img/brands/mic.jpeg" },
   {
     name: "Allen & Heath",
     category: "Mixing Consoles",
-    image:
-      "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600&q=80",
+    image: "img/brands/3.jpeg",
   },
-  {
-    name: "Pioneer DJ",
-    category: "DJ Equipment",
-    image:
-      "https://images.unsplash.com/photo-1571330735066-03aaa9429d89?w=600&q=80",
-  },
-  {
-    name: "Crown Audio",
-    category: "Amplifiers",
-    image:
-      "https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=600&q=80",
-  },
+  { name: "Pioneer DJ", category: "DJ Equipment", image: "img/brands/4.jpeg" },
+  { name: "Crown Audio", category: "Amplifiers", image: "img/brands/5.jpeg" },
+  { name: "Yamaha", category: "Audio Equipment", image: "img/brands/6.jpg" },
+  { name: "Behringer", category: "Sound Systems", image: "img/brands/7.jpeg" },
 ];
 
 export default function BrandsPage() {
   return (
-    <section className="py-24 px-6 bg-white">
-      <div className="max-w-7xl mx-auto">
-
+    <section className="py-24 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
@@ -71,30 +50,35 @@ export default function BrandsPage() {
             </Button>
           </Link>
         </div>
-
-        {/* Carousel */}
         <Swiper
-          modules={[Navigation, Autoplay]}
-          navigation
-          autoplay={{ delay: 3000 }}
+          modules={[Autoplay]}
+          loop={true}
+          centeredSlides={true}
+          slidesPerView={3} // ½ + 3 + ½
           spaceBetween={20}
-          slidesPerView={3.5}   // 👈 This makes 3 and half visible
-          breakpoints={{
-            0: { slidesPerView: 1.2 },
-            640: { slidesPerView: 2.2 },
-            1024: { slidesPerView: 3.5 },
+          speed={5000} // 🔥 controls smoothness
+          autoplay={{
+            delay: 0, // 🔥 important
+            disableOnInteraction: false,
           }}
+          allowTouchMove={false} // optional (removes drag jerk)
+          breakpoints={{
+            0: { slidesPerView: 1.5 },
+            640: { slidesPerView: 2.5 },
+            1024: { slidesPerView: 4 },
+          }}
+          className="brands-swiper"
         >
           {brands.map((brand, index) => (
             <SwiperSlide key={index}>
-              <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+              <div className="group relative overflow-hidden rounded-2xl shadow-lg">
                 <div className="aspect-square relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
 
                   <img
                     src={brand.image}
                     alt={brand.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover"
                   />
 
                   <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
@@ -111,8 +95,14 @@ export default function BrandsPage() {
             </SwiperSlide>
           ))}
         </Swiper>
-
       </div>
+
+      {/* 🔥 Make movement linear (VERY IMPORTANT) */}
+      <style jsx global>{`
+        .brands-swiper .swiper-wrapper {
+          transition-timing-function: linear !important;
+        }
+      `}</style>
     </section>
   );
 }

@@ -10,7 +10,7 @@ const equipment = [
   {
     name: 'EV Professional Series',
     category: 'Speakers',
-    image: 'img/EV.png',
+    image: 'img/brands/EV.png',
     features: ['High Power', 'Crystal Clear']
   },
   {

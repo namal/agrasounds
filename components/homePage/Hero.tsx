@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation"
 
 interface HeroProps {
   scrollY: number
-  // onGetQuote: () => void
+   onGetQuote: () => void
 }
 
 export default function Hero({ scrollY }: HeroProps) {

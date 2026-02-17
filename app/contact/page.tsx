@@ -3,7 +3,6 @@ import { useState } from "react";
 import Image from "next/image";
 import ReCAPTCHA from "react-google-recaptcha";
 
-
 export default function ContactPage() {
   const [form, setForm] = useState({
     name: "",
@@ -19,38 +18,37 @@ export default function ContactPage() {
   ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
-const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (!captchaToken) {
-    alert("Please verify that you are not a robot.");
-    return;
-  }
+    if (!captchaToken) {
+      alert("Please verify that you are not a robot.");
+      return;
+    }
 
-  setLoading(true);
+    setLoading(true);
 
-  const res = await fetch("/api/contact", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ ...form, captchaToken }),
-  });
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...form, captchaToken }),
+    });
 
-  const data = await res.json();
-  setLoading(false);
+    const data = await res.json();
+    setLoading(false);
 
-  if (data.success) {
-    alert("Message sent successfully!");
-    setForm({ name: "", email: "", phone: "", message: "" });
-    setCaptchaToken(null);
-  } else {
-    alert("Captcha verification failed.");
-  }
-};
-
+    if (data.success) {
+      alert("Message sent successfully!");
+      setForm({ name: "", email: "", phone: "", message: "" });
+      setCaptchaToken(null);
+    } else {
+      alert("Captcha verification failed.");
+    }
+  };
 
   return (
     <>
@@ -63,11 +61,8 @@ const [captchaToken, setCaptchaToken] = useState<string | null>(null);
           priority
           className="object-cover "
         />
-
         Overlay
         <div className="absolute inset-0 bg-black/40" />
-
-
         <div className="relative z-10 text-center px-6">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">Get in Touch</h1>
           <p className="text-zinc-200 mx-auto text-3xl">
@@ -145,12 +140,12 @@ const [captchaToken, setCaptchaToken] = useState<string | null>(null);
                     required
                   />
                 </div>
-                  <div className="flex justify-center">
-  <ReCAPTCHA
-    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-    onChange={(token) => setCaptchaToken(token)}
-  />
-</div>
+                <div className="flex justify-center">
+                  <ReCAPTCHA
+                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+                    onChange={(token) => setCaptchaToken(token)}
+                  />
+                </div>
                 <button
                   type="submit"
                   disabled={loading}
